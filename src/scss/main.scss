@@ -14,12 +14,15 @@ $background-color-4: rgba(255, 255, 255, 0.29);
 $background-color-5: #CCE06E;
 $background-color-6: #CEC63B;
 
+
 $border-color-1: #313234;
 $border-color-2: rgba(0, 0, 0, 0.17);
 $border-color-3: rgba(255, 210, 158, 0.09);
 $border-color-4: #8C8C8C;
 $border-color-5: #B8B8B8;
 $border-color-6: #ffffff;
+$border-color-7: #ff0000;
+$border-color-8: #B7D333;
 
 * {
     margin: 0;
@@ -114,9 +117,7 @@ header {
             }
         }
 
-        .hamburger {
-            display: none;
-        }
+
     }
 }
 
@@ -455,6 +456,10 @@ header {
             textarea {
                 border: 1px solid $border-color-4;
                 padding-right: 18px;
+
+                &.active {
+                    border-color: $border-color-8;
+                }
             }
 
             input {
@@ -489,9 +494,23 @@ header {
                 margin-bottom: 2px;
                 font-size: 12px;
                 color: $font-color-6;
-                text-align: right;
                 padding-right: 9px;
-                visibility: hidden;
+                align-self: flex-start;
+            }
+
+            .sending-info {
+                display: flex;
+                margin-bottom: 0;
+                font-size: 14px;
+
+                &.success-info {
+                    color: $font-color-3;
+                }
+
+                &.error-info {
+                    color: $font-color-4;
+                }
+
             }
 
             button {
@@ -508,6 +527,74 @@ header {
                 &:hover {
                     background-color: $background-color-6;
                 }
+
+                &.loading {
+                    position: relative;
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+
+                &.loading::after {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    border: 2px solid rgba(0, 0, 0, 0.2);
+                    border-right-color: rgba(0, 0, 0, 0.7);
+                    transform: translate(-50%, -50%) rotate(0deg);
+                    content: "";
+                    animation: rotateSingleLoading 0.6s infinite linear;
+                    z-index: 10;
+                }
+
+                @keyframes rotateSingleLoading {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(0deg);
+                    }
+
+                    100% {
+                        transform: translate(-50%, -50%) rotate(360deg);
+                    }
+                }
+            }
+
+            p.error {
+                margin: 0;
+                margin-top: -2px;
+                margin-left: 5px;
+                font-size: 12px;
+                color: $font-color-6;
+                // position: absolute;
+            }
+
+            input.error,
+            textarea.error {
+                border-color: $border-color-7;
+            }
+        }
+
+        .successSendingMessage {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            visibility: hidden;
+            width: 100%;
+
+            h2 {
+                margin-bottom: 0;
+                color: $font-color-3;
+            }
+
+            p {
+                text-align: center;
             }
         }
 
@@ -585,7 +672,94 @@ footer {
             .nav_phone-wrapper {
 
                 nav {
-                    display: none;
+
+                    ul.show {
+                        left: 0;
+                        transition: left ease-out .5s;
+                    }
+
+                    ul {
+                        transition: left ease-out .5s;
+                        display: flex;
+                        position: fixed;
+                        top: 0;
+                        left: -500px;
+                        min-height: 100vh;
+                        min-width: fit-content;
+                        width: 30%;
+                        background: white;
+                        z-index: 3;
+                        flex-direction: column;
+                        padding: 80px 15px 0 15px;
+                        margin: 0;
+
+                        li {
+                            padding: 10px;
+
+                            a {
+                                font-size: 20px;
+                            }
+                        }
+
+
+                    }
+
+                    .hamburger {
+                        padding: 10px 15px;
+                        border: solid 1px $border-color-1;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 20px;
+
+                        .bars {
+                            position: relative;
+                            cursor: pointer;
+
+                            .icon-bar {
+                                background-color: $border-color-1;
+                                display: block;
+                                width: 15px;
+                                height: 2px;
+                                position: relative;
+                                transition: all 0.3s;
+
+                                &:nth-child(1) {
+                                    transform: rotate(45deg);
+                                    top: 5px;
+                                }
+
+                                &:nth-child(2) {
+                                    opacity: 0;
+                                    margin: 3px 0;
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotate(-45deg);
+                                    bottom: 5px;
+                                }
+                            }
+                        }
+
+                        .bars.ham {
+                            .icon-bar {
+                                &:nth-child(1) {
+                                    transform: rotate(0);
+                                    top: 0;
+                                }
+
+                                &:nth-child(2) {
+                                    opacity: 1;
+                                    margin: 3px 0;
+                                }
+
+                                &:nth-child(3) {
+                                    transform: rotate(0);
+                                    bottom: 0;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 .phone {

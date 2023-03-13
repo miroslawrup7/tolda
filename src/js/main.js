@@ -4,12 +4,14 @@ const formLoc = document.querySelector("#contact-form");
 const successSendingMessageLoc = document.querySelector(".successSendingMessage");
 
 const nameLoc = document.querySelector("#name");
-const mailLoc = document.querySelector("#mail");
-const subjectLoc = document.querySelector("#subject");
+const surnameLoc = document.querySelector("#surname");
+const telLoc = document.querySelector("#tel");
+const tentLoc = document.querySelector("#tent");
+const dateLoc = document.querySelector("#date");
 const messageLoc = document.querySelector("#message");
 
 const sendingInfoLoc = document.querySelector(".sending-info");
-const buttonLoc = document.querySelector("button");
+const buttonLoc = document.querySelector("form button");
 
 let validationPass;
 
@@ -48,21 +50,19 @@ nameLoc.addEventListener("keyup", (e) => {
     validateEmpty(e.target, false); 
 });
 
-mailLoc.addEventListener("keyup", (e) => {
-    validateEmpty(e.target, false); 
-    validateEmail(e.target, false); 
-});
-mailLoc.addEventListener("blur", (e) => {
-    validateEmail(e.target, true); 
-});
-
-subjectLoc.addEventListener("keyup", (e) => {
+surnameLoc.addEventListener("keyup", (e) => {
     validateEmpty(e.target, false); 
 });
 
-messageLoc.addEventListener("keyup", (e) => {
+telLoc.addEventListener("keyup", (e) => {
     validateEmpty(e.target, false); 
 });
+
+tentLoc.addEventListener("keyup", (e) => {
+    validateEmpty(e.target, false); 
+});
+
+
 
 buttonLoc.addEventListener("click", (e) => {
     e.preventDefault();
@@ -73,10 +73,11 @@ buttonLoc.addEventListener("click", (e) => {
 
     validationPass = true;
     validateEmpty(nameLoc, true); 
-    validateEmpty(mailLoc, true); 
-    validateEmail(mailLoc, true); 
-    validateEmpty(subjectLoc, true); 
-    validateEmpty(messageLoc, true); 
+    validateEmpty(surnameLoc, true); 
+    validateEmpty(telLoc, true); 
+    validateEmpty(tentLoc, true); 
+
+    
 
     if (validationPass) {
         console.log("Walidacja prawidłowa! :)");
@@ -158,17 +159,31 @@ nameLoc.addEventListener("blur", (e) => {
     unmarkActivedInput(e.target); 
 });
 
-mailLoc.addEventListener("focus", (e) => {
+surnameLoc.addEventListener("focus", (e) => {
     markActivedInput(e.target); 
 });
-mailLoc.addEventListener("blur", (e) => {
+surnameLoc.addEventListener("blur", (e) => {
     unmarkActivedInput(e.target); 
 });
 
-subjectLoc.addEventListener("focus", (e) => {
+telLoc.addEventListener("focus", (e) => {
     markActivedInput(e.target); 
 });
-subjectLoc.addEventListener("blur", (e) => {
+telLoc.addEventListener("blur", (e) => {
+    unmarkActivedInput(e.target); 
+});
+
+tentLoc.addEventListener("focus", (e) => {
+    markActivedInput(e.target); 
+});
+tentLoc.addEventListener("blur", (e) => {
+    unmarkActivedInput(e.target); 
+});
+
+dateLoc.addEventListener("focus", (e) => {
+    markActivedInput(e.target); 
+});
+dateLoc.addEventListener("blur", (e) => {
     unmarkActivedInput(e.target); 
 });
 
@@ -178,6 +193,7 @@ messageLoc.addEventListener("focus", (e) => {
 messageLoc.addEventListener("blur", (e) => {
     unmarkActivedInput(e.target); 
 });
+
 
 // mobile menu
 
@@ -193,7 +209,6 @@ hamburgerLoc.addEventListener("click", () => {
  
     mobileMenuElemLoc.forEach(elem => {
         elem.addEventListener("click", () => {
-            console.log("SDFSGDF")
             mobileMenuLoc.classList.remove("show");
             hamburgerBarsLoc.classList.add("ham");
         });
