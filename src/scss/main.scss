@@ -409,6 +409,7 @@ header {
         width: fit-content;
         margin-bottom: 60px;
         padding-bottom: 10px;
+        text-align: center;
     }
 }
 
@@ -509,6 +510,13 @@ header {
                 }
             }
         }
+
+        .explanation {
+            font-weight: 400;
+            font-size: 16px;
+            max-width: 450px;
+            margin-top: 30px;
+        }
     }
 
     .address {
@@ -519,13 +527,6 @@ header {
             color: $font-color-5;
             font-weight: 600;
             font-size: 25px;
-
-            &.explanation {
-                font-weight: 400;
-                font-size: 20px;
-                max-width: 450px;
-                margin-top: 10px;
-            }
 
             &.tel {
                 color: $font-color-1;
@@ -757,7 +758,7 @@ footer {
         h1 {
             font-size: 32px;
             line-height: 44px;
-            margin: 0 120px 28px;
+            margin: 0 0 28px;
             text-align: center;
             // width: auto;
         }
@@ -824,6 +825,13 @@ footer {
                     padding: 12px 30px;
                 }
             }
+
+            .explanation {
+                font-size: 15px;
+                line-height: 25px;
+                margin: 30px 100px;
+                text-align: center;
+            }
         }
 
         .address {
@@ -842,18 +850,11 @@ footer {
             }
 
             p {
-                &.explanation {
-                    font-size: 19px;
-                    line-height: 26px;
-
-                    &.tel {
-                        font-size: 32px;
-                        line-height: 44px;
-                    }
+                &.tel {
+                    font-size: 32px;
+                    line-height: 44px;
                 }
             }
-
-
         }
     }
 
