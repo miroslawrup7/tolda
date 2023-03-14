@@ -62,6 +62,10 @@ tentLoc.addEventListener("keyup", (e) => {
     validateEmpty(e.target, false); 
 });
 
+dateLoc.addEventListener("keyup", (e) => {
+    validateEmpty(e.target, false); 
+});
+
 
 
 buttonLoc.addEventListener("click", (e) => {
@@ -76,7 +80,7 @@ buttonLoc.addEventListener("click", (e) => {
     validateEmpty(surnameLoc, true); 
     validateEmpty(telLoc, true); 
     validateEmpty(tentLoc, true); 
-
+    validateEmpty(dateLoc, true); 
     
 
     if (validationPass) {
@@ -191,6 +195,13 @@ messageLoc.addEventListener("focus", (e) => {
     markActivedInput(e.target); 
 });
 messageLoc.addEventListener("blur", (e) => {
+    unmarkActivedInput(e.target); 
+});
+
+dateLoc.addEventListener("focus", (e) => {
+    markActivedInput(e.target); 
+});
+dateLoc.addEventListener("blur", (e) => {
     unmarkActivedInput(e.target); 
 });
 
